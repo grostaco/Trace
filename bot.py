@@ -15,7 +15,7 @@ from discord.compare.comparehis import comparehis
 
 from discord.count.count_func import call_count
 from discord.count.last_week import recent
-#from discord.count.all_time import forever
+from discord.count.all_time import forever
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
