@@ -126,17 +126,17 @@ int main (int argc, char** argv) {
         snprintf(buffer, 256, "%s/metadata.json", outfile);
         FILE* json = fopen(buffer, "w");
         if (i != -1)outfile[i]='/';
-        fprintf(json, "{\
-                       \n\t\"QUERY_FLAG_AID\":\"%d\",\
-                       \n\t\"QUERY_FLAG_YEAR\":\"%d-%d\",\
-                       \n\t\"QUERY_FLAG_TYPE\":\"%s\",\
-                       \n\t\"QUERY_FLAG_RELATED_AID_LIST\":\"%s\",\
-                       \n\t\"QUERY_FLAG_RELATED_AID_TYPE\":\"%s\",\
-                       \n\t\"QUERY_FLAG_ROMANJI_NAME\":\"%s\",\
-                       \n\t\"QUERY_FLAG_ENGLISH_NAME\":\"%s\",\
-                       \n\t\"QUERY_FLAG_EPISODES\":\"%d\",\
-                       \n\t\"QUERY_FLAG_RATINGS\":\"%d\",\
-                       \n\t\"QUERY_FLAG_TAG_NAME_LIST\":\"%s\" \n}",
+        fprintf(json, "{"
+                       "\n\t\"QUERY_FLAG_AID\":\"%d\","
+                       "\n\t\"QUERY_FLAG_YEAR\":\"%d-%d\","
+                       "\n\t\"QUERY_FLAG_TYPE\":\"%s\","
+                       "\n\t\"QUERY_FLAG_RELATED_AID_LIST\":\"%s\","
+                       "\n\t\"QUERY_FLAG_RELATED_AID_TYPE\":\"%s\","
+                       "\n\t\"QUERY_FLAG_ROMANJI_NAME\":\"%s\","
+                       "\n\t\"QUERY_FLAG_ENGLISH_NAME\":\"%s\","
+                       "\n\t\"QUERY_FLAG_EPISODES\":\"%d\","
+                       "\n\t\"QUERY_FLAG_RATINGS\":\"%d\","
+                       "\n\t\"QUERY_FLAG_TAG_NAME_LIST\":\"%s\" \n}",
                        ani_res->aid, ani_res->year.from, ani_res->year.to,
                        ani_res->type, query_any_list_concat((struct any_list*)ani_res->related_aid_list, ","), query_any_list_concat((struct any_list*)ani_res->related_aid_type, ","),
                        ani_res->romanji_name, ani_res->english_name, 
