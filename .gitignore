@@ -4,3 +4,4 @@ object/*
 build
 discord/data/*
 .env
+__pycache__
