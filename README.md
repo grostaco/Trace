@@ -24,6 +24,7 @@ This program is under GPL-3.0 license.
 * [cv2](https://pypi.org/project/opencv-python/)
 * [numpy](https://numpy.org/)
 * [gcc](https://gcc.gnu.org/)
+* [ffmpeg](https://ffmpeg.org/)
 * [makefile](https://www.gnu.org/software/make/)
 ### Building
 #### Compile source files
