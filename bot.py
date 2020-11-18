@@ -53,8 +53,8 @@ async def help(ctx):
     embed.set_thumbnail(url='https://pbs.twimg.com/media/DcEu9_bXcAAQ-Cv.png')
 
     embed.add_field(name="Find source  :face_with_raised_eyebrow: ", value="t!source <picture url>")
-    embed.add_field(name="Top 5 source found!  :pencil: ", value="t!top", inline=False)
-    embed.add_field(name="Add source! ", value="t!add <picture/video url>", inline=False)
+    embed.add_field(name="Top 5 sources searched of all time!  :pencil: ", value="t!top", inline=False)
+    embed.add_field(name="Top 5 sources searched weekly!  :pencil: ", value="t!weekly", inline=False)
 
     await ctx.send(embed=embed)
 
@@ -92,7 +92,7 @@ async def source(ctx, url):
             _,name= os.path.split(d)
             call_count(name)
             await ctx.send(str(ctx.author.mention)+" \n"+ name)
-            info = json.load(open(d+'/meta.json', 'r'))
+            info = json.load(open(d+'/metadata.json', 'r'))
             file = discord.File(source_path, filename= "image"+"."+source_path.split(".")[-1])
             print(source_path.split(".")[-1])
             embed = discord.Embed(
@@ -156,15 +156,15 @@ async def weekly(ctx):
 
     await ctx.send(embed=embed)
 
-@bot.command(name="rec")
-async def rec(ctx,tag1,tag2):
-    temp = []
-    tag_list = json.load(open('../Trace/discord/data/label.json', 'r'))
-    for title in tag_list.keys():
-        if tag1 in tag_list[title] and tag2 in tag_list[title]:
-            temp.append(title)
-
-    await ctx.send(random.choice(temp))
+#@bot.command(name="rec")
+#async def rec(ctx,tag1,tag2):
+#    temp = []
+#    tag_list = json.load(open('../Trace/discord/data/label.json', 'r'))
+#    for title in tag_list.keys():
+#        if tag1 in tag_list[title] and tag2 in tag_list[title]:
+#            temp.append(title)#
+#
+#    await ctx.send(random.choice(temp))
 
 
 
