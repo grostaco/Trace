@@ -5,3 +5,4 @@ build
 discord/data/*
 .env
 __pycache__
+metadata.json
