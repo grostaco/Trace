@@ -77,6 +77,11 @@ int _frame_extract(__frame_frameobject* self, enum AVPixelFormat pixfmt, enum AV
         if ((self->_errnum = avcodec_receive_frame(self->_cCtx, self->_frame)) != 0) {
             continue;
         }
+
+        if ((self->_cframe % 30 != 0)) {
+            self->_cframe++;
+            continue;
+        }
         
         
         if (extopt.skip) {
