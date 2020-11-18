@@ -55,7 +55,7 @@ async def help(ctx):
     # embed.set_image(url='https://pbs.twimg.com/media/DcEu9_wW0AAE2VK.png')
     embed.set_thumbnail(url='https://pbs.twimg.com/media/DcEu9_bXcAAQ-Cv.png')
 
-    embed.add_field(name="Find source  :face_with_raised_eyebrow: ", value="t!source <picture url>")
+    embed.add_field(name="Find source  :face_with_raised_eyebrow: ", value="t!source <anime name> <picture url>")
     embed.add_field(name="Top 5 source searched!  :lemon: ", value="t!top", inline=False)
     embed.add_field(name="Top 5 source searched weekly!  :mango:  ", value="t!weekly", inline=False)
     embed.add_field(name="Add source!  :open_mouth: ", value="t!add <picture/video url>", inline=False)
