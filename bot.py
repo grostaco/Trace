@@ -101,29 +101,41 @@ async def source(ctx, url):
             source_path = comparehis(url)
             print(source_path)
             d, _ = os.path.split(source_path)
-            d, _ = os.path.split(d)
-            _, name = os.path.split(d)
+            d, _= os.path.split(d)
+            _,name= os.path.split(d)
             call_count(name)
             await ctx.send(str(ctx.author.mention)+" \n"+ name)
-            info = json.load(open(d+'/metadata.json', 'r'))
+            #info = json.load(open(d+'/meta.json', 'r'))
             file = discord.File(source_path, filename= "image"+"."+source_path.split(".")[-1])
-            print(source_path.split(".")[-1])
-            embed = discord.Embed(
-                title=info["QUERY_FLAG_ROMANJI_NAME"] + "\n" + info["QUERY_FLAG_ENGLISH_NAME"],
+            #print(source_path.split(".")[-1])
+            if os.path.exists(d+'/metadata.json'):
+                info = json.load(open(d + '/metadata.json', 'r'))
+                embed = discord.Embed(
+                title=info["QUERY_FLAG_ROMANJI_NAME"]+"\n"+info["QUERY_FLAG_ENGLISH_NAME"],
                 description=info["QUERY_FLAG_YEAR"],
                 colour=discord.Color.blue()
             )
-            embed.add_field(name="Episode", value=info["QUERY_FLAG_EPISODES"], inline=False)
-            embed.add_field(name="Ratings", value=info["QUERY_FLAG_RATINGS"], inline=False)
-            embed.add_field(name="Tags", value=info["QUERY_FLAG_TAG_NAME_LIST"].replace(",", ", "), inline=False)
-            embed.add_field(name="\u200B", value='\u200B')
-            embed.add_field(name="Best matched", value='\u200B', inline=False)
-            embed.set_image(url="attachment://" + "image" + "." + source_path.split(".")[-1])
-            await ctx.send(file=file, embed=embed)
+                embed.add_field(name="Episode", value=info["QUERY_FLAG_EPISODES"], inline=False)
+                embed.add_field(name="Ratings", value=info["QUERY_FLAG_RATINGS"], inline=False)
+                embed.add_field(name="Tags", value=info["QUERY_FLAG_TAG_NAME_LIST"].replace(",",", "),inline=False)
+                embed.add_field(name="\u200B", value= '\u200B')
+                embed.add_field(name="Best matched", value= '\u200B', inline=False)
+                embed.set_image(url="attachment://"+"image"+"."+source_path.split(".")[-1])
+                await ctx.send(file=file,embed=embed)
+            else:
+                embed = discord.Embed(
+                title = "No anime information yet, \nPlease wait for further update",
+                description="",
+                colour=discord.Color.blue())
+                embed.add_field(name="\u200B", value='\u200B')
+                embed.add_field(name="Best matched", value='\u200B', inline=False)
+                embed.set_image(url="attachment://" + "image" + "." + source_path.split(".")[-1])
+                await ctx.send(file=file, embed=embed)
+
             run = True
             break
 
-    if not run:
+    if not run :
         await ctx.send('command error')
 
 
